@@ -139,7 +139,9 @@ ul{margin:0;padding:0}
 svg.i{width:20px;height:20px;flex:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-.section,#top{scroll-margin-top:72px}
+/* land a section heading ~32px under the sticky header */
+.section{scroll-margin-top:calc(104px - var(--space-section))}
+#top{scroll-margin-top:0}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* intro curtain */
@@ -191,14 +193,14 @@ svg.i{width:20px;height:20px;flex:none}
   transition:border-color .3s,background .3s;
 }
 .site-header.scrolled{border-bottom-color:var(--line);background:var(--glass-strong)}
-.site-header .wrap{display:flex;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px}
+.site-header .wrap{display:flex;align-items:center;gap:12px;min-height:72px;padding-top:12px;padding-bottom:12px}
 .brand{display:flex;align-items:center;gap:10px;white-space:nowrap;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.1rem;text-decoration:none;margin-right:auto}
 .brand-mark{
   display:grid;place-items:center;width:34px;height:34px;border-radius:10px;
   background:var(--grad);color:var(--accent-ink);font-size:.85rem;letter-spacing:-0.02em;
 }
 :root[data-theme="dark"] .brand-mark{color:#061412}
-.nav{display:flex;gap:28px;list-style:none}
+.nav{display:flex;gap:28px;list-style:none;margin-right:16px}
 .nav a{position:relative;text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500;transition:color .25s}
 .nav a::after{
   content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--grad);
@@ -211,6 +213,13 @@ svg.i{width:20px;height:20px;flex:none}
   position:absolute;left:0;bottom:-6px;height:2px;width:0;border-radius:2px;background:var(--grad);
   opacity:0;pointer-events:none;transition:transform .5s var(--ease),width .5s var(--ease),opacity .3s;
 }
+.nav-cta{
+  display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:10px;white-space:nowrap;
+  background:var(--grad);color:var(--accent-ink);font-size:var(--fs-sm);font-weight:600;text-decoration:none;
+  transition:transform .25s var(--ease),box-shadow .25s;
+}
+:root[data-theme="dark"] .nav-cta{color:#061412}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px -10px color-mix(in srgb,var(--accent) 60%,transparent)}
 .icon-btn{
   display:grid;place-items:center;width:42px;height:42px;padding:0;flex:none;
   background:transparent;border:1px solid var(--line);border-radius:10px;color:var(--text);cursor:pointer;
@@ -357,10 +366,6 @@ svg.i{width:20px;height:20px;flex:none}
 /* section headings */
 .section{padding:var(--space-section) 0 0}
 .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:var(--space-head)}
-.sec-num{
-  font-family:"JetBrains Mono",ui-monospace,monospace;font-size:var(--fs-xs);color:var(--accent-text);
-  padding:4px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);
-}
 .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
 .js .sec-head::after{transform:scaleX(0);transform-origin:left;transition:transform 1.3s var(--ease) .25s}
 .js .sec-head.in::after{transform:scaleX(1)}
@@ -562,6 +567,9 @@ svg.i{width:20px;height:20px;flex:none}
 @keyframes par{from{transform:translateY(-6%) scale(1.16)}to{transform:translateY(6%) scale(1.16)}}
 
 /* responsive */
+@media (max-width:1100px){
+  .nav-cta{display:none}
+}
 @media (max-width:1000px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
 }
@@ -576,6 +584,7 @@ svg.i{width:20px;height:20px;flex:none}
 }
 @media (max-width:900px){
   .js .menu-btn{display:grid}
+  .js .nav{margin-right:0}
   .js .nav{
     position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;padding:6px 24px 14px;
     background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -20px rgba(0,0,0,.45);
@@ -643,6 +652,7 @@ svg.i{width:20px;height:20px;flex:none}
       <li><a href="#contact">Contact</a></li>
       <li class="nav-ind" id="navInd" aria-hidden="true"></li>
     </ul>
+    <a class="nav-cta calendly-widget" href="https://calendly.com/shahzaib-mughal/30min" data-url="https://calendly.com/shahzaib-mughal/30min?hide_gdpr_banner=1&amp;utm_source=portfolio&amp;utm_medium=header" target="_blank" rel="noopener">Book a call</a>
     <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="Switch to light theme">
       <svg class="i sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="i moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
@@ -705,7 +715,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="about">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">01</span><h2 data-split>About</h2></div>
+      <div class="sec-head"><h2 data-split>About</h2></div>
       <div class="about-grid">
         <div class="about-main reveal">
           <p class="about-lead">I like taking messy, manual processes and turning them into <span class="grad-text">software that just works</span>.</p>
@@ -727,7 +737,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="services">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">02</span><h2 data-split>What I do</h2></div>
+      <div class="sec-head"><h2 data-split>What I do</h2></div>
       <div class="svc-grid">
         <article class="svc reveal" style="--i:0">
           <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
@@ -765,7 +775,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="experience">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">03</span><h2 data-split>Experience</h2></div>
+      <div class="sec-head"><h2 data-split>Experience</h2></div>
       <div class="jobs" id="jobs">
 
         <article class="job-card" style="--k:0">
@@ -834,7 +844,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="skills">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">04</span><h2 data-split>Skills</h2></div>
+      <div class="sec-head"><h2 data-split>Skills</h2></div>
       <div id="skillRows">
         <div class="skill-row"><h3>Languages</h3><ul class="chips"><li>C#</li><li>C++</li><li>JavaScript</li><li>SQL</li></ul></div>
         <div class="skill-row"><h3>Backend</h3><ul class="chips"><li>.NET Core</li><li>ASP.NET</li><li>.NET Aspire</li><li>Web Forms</li><li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>Web APIs</li></ul></div>
@@ -849,7 +859,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="projects">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">05</span><h2 data-split>Projects</h2></div>
+      <div class="sec-head"><h2 data-split>Projects</h2></div>
       <p class="projects-intro reveal">Live demos are on the way. Until then, <a href="mailto:Shahzaibmughal372.sm@gmail.com?subject=Project%20walkthrough">email me</a> and I'll walk you through any of these on a call.</p>
 
       <div class="proj-list">
@@ -905,7 +915,7 @@ svg.i{width:20px;height:20px;flex:none}
 
   <section class="section" id="education">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">06</span><h2 data-split>Education</h2></div>
+      <div class="sec-head"><h2 data-split>Education</h2></div>
       <div class="edu reveal">
         <div class="edu-entry">
           <div>
