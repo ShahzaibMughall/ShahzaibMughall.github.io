@@ -219,25 +219,27 @@ svg.i{width:20px;height:20px;flex:none}
 .site-header.open .menu-btn span:last-child{top:19px;transform:rotate(-45deg)}
 
 /* hero */
-.hero{position:relative;isolation:isolate;overflow:hidden;padding:72px 0 72px}
+.hero{position:relative;isolation:isolate;overflow-x:clip;overflow-y:visible;padding:72px 0 40px}
 .hero::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent);
   background:radial-gradient(560px circle at var(--mx,72%) var(--my,30%),color-mix(in srgb,var(--accent) 13%,transparent),transparent 62%);
 }
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
   background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 60% 40%,#000 25%,transparent 75%);
-  mask-image:radial-gradient(ellipse 70% 70% at 60% 40%,#000 25%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 60% 40%,#000 25%,transparent 75%),linear-gradient(to bottom,#000 55%,transparent);-webkit-mask-composite:source-in;
+  mask-image:radial-gradient(ellipse 70% 70% at 60% 40%,#000 25%,transparent 75%),linear-gradient(to bottom,#000 55%,transparent);mask-composite:intersect;
 }
 .net{
   position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none;
-  -webkit-mask-image:radial-gradient(ellipse 80% 75% at 55% 45%,#000 30%,transparent 80%);
-  mask-image:radial-gradient(ellipse 80% 75% at 55% 45%,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 75% at 55% 45%,#000 30%,transparent 80%),linear-gradient(to bottom,#000 55%,transparent);-webkit-mask-composite:source-in;
+  mask-image:radial-gradient(ellipse 80% 75% at 55% 45%,#000 30%,transparent 80%),linear-gradient(to bottom,#000 55%,transparent);mask-composite:intersect;
 }
 .grain{
   position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  -webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent);
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 :root[data-theme="light"] .grain{opacity:.07}
@@ -468,8 +470,6 @@ svg.i{width:20px;height:20px;flex:none}
 }
 .proj-link:hover{translate:0 -2px;border-color:var(--accent);box-shadow:0 10px 24px -14px color-mix(in srgb,var(--accent) 60%,transparent)}
 .proj-link:active{translate:0 0}
-/* a demo button stays hidden until its href holds a real URL */
-.proj-link[href="#"]{display:none}
 .proj-link .arr{transition:translate .3s var(--ease)}
 .proj-link:hover .arr{translate:4px 0}
 
@@ -926,7 +926,7 @@ svg.i{width:20px;height:20px;flex:none}
         <p class="cta-kicker">Have a role or a project in mind?</p>
         <h2 class="cta-title">Let's build something <span class="grad-text">reliable</span> together.</h2>
         <div class="mail-row">
-          <a class="contact-mail" href="mailto:Shahzaibmughal372.sm@gmail.com" data-magnet>Shahzaibmughal372.sm@gmail.com</a>
+          <a class="contact-mail" href="mailto:Shahzaibmughal372.sm@gmail.com" data-magnet>Shahzaibmughal372.sm@<wbr>gmail.com</a>
           <button class="btn btn-ghost copy" id="copyMail" type="button" data-email="Shahzaibmughal372.sm@gmail.com">Copy email</button>
         </div>
         <div class="actions">
@@ -1195,6 +1195,15 @@ svg.i{width:20px;height:20px;flex:none}
         e.preventDefault();
         window.Calendly.initPopupWidget({ url: el.getAttribute('data-url') });
       }
+    });
+  });
+
+  /* demo buttons: until a project's href holds a real URL, say so instead of opening a blank tab */
+  document.querySelectorAll('.proj-link').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      if (el.getAttribute('href') !== '#') return;
+      e.preventDefault();
+      showToast('Live demo coming soon. Email me and I\'ll walk you through it.');
     });
   });
 
