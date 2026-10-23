@@ -477,6 +477,7 @@ svg.i{width:20px;height:20px;flex:none}
 .proj-body h3{font-size:var(--fs-card);font-weight:600;margin:0;text-wrap:balance;transition:color .3s}
 .proj-row:hover .proj-body h3{color:var(--accent-text)}
 .proj-body p{margin:6px 0 0;color:var(--muted);font-size:var(--fs-sm);max-width:52ch}
+.proj-body .proj-stack{margin-top:8px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:var(--fs-xs);color:var(--accent-text)}
 .proj-link{
   display:inline-flex;align-items:center;gap:8px;min-height:42px;font-size:var(--fs-sm);font-weight:600;color:var(--accent-text);
   text-decoration:none;white-space:nowrap;padding:9px 16px;border-radius:10px;
@@ -691,7 +692,7 @@ svg.i{width:20px;height:20px;flex:none}
             <svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
         </div>
-        <p class="respond fade" style="--d:3">Available now. Usually replies within 24 hours.</p>
+        <p class="respond fade" style="--d:3">Usually replies within 24 hours.</p>
       </div>
 
       <div class="hero-art" id="heroArt">
@@ -719,7 +720,7 @@ svg.i{width:20px;height:20px;flex:none}
       <div class="about-grid">
         <div class="about-main reveal">
           <p class="about-lead">I like taking messy, manual processes and turning them into <span class="grad-text">software that just works</span>.</p>
-          <p class="about-copy">When a client stops doing things in spreadsheets and lets the system handle it, that's a good day. The deeper the better: most of my time goes into backend and architecture, and that's where I'm happiest: designing systems that stay fast as the data grows.</p>
+          <p class="about-copy">When a client stops doing things in spreadsheets and lets the system handle it, that's a good day. Most of my time goes into backend and architecture, and that's where I'm happiest, designing systems that stay fast as the data grows.</p>
         </div>
 
         <aside class="profile-card reveal" style="--i:1">
@@ -847,10 +848,10 @@ svg.i{width:20px;height:20px;flex:none}
       <div class="sec-head"><h2 data-split>Skills</h2></div>
       <div id="skillRows">
         <div class="skill-row"><h3>Languages</h3><ul class="chips"><li>C#</li><li>C++</li><li>JavaScript</li><li>SQL</li></ul></div>
-        <div class="skill-row"><h3>Backend</h3><ul class="chips"><li>.NET Core</li><li>ASP.NET</li><li>.NET Aspire</li><li>Web Forms</li><li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>Web APIs</li></ul></div>
+        <div class="skill-row"><h3>Backend</h3><ul class="chips"><li>.NET Core</li><li>ASP.NET</li><li>.NET Aspire</li><li>Web Forms</li><li>Node.js</li><li>Express.js</li><li>REST APIs</li><li>Web APIs</li><li>Web Services</li></ul></div>
         <div class="skill-row"><h3>Frontend</h3><ul class="chips"><li>React.js</li><li>HTML</li><li>CSS</li><li>Bootstrap</li></ul></div>
         <div class="skill-row"><h3>Databases</h3><ul class="chips"><li>SQL Server</li><li>MySQL</li><li>PostgreSQL</li><li>MongoDB</li><li>Redis</li></ul></div>
-        <div class="skill-row"><h3>Architecture</h3><ul class="chips"><li>Microservices</li><li>CQRS</li><li>Mediator</li><li>Repository pattern</li><li>MERN stack</li></ul></div>
+        <div class="skill-row"><h3>Architecture</h3><ul class="chips"><li>Microservices</li><li>CQRS</li><li>Mediator pattern</li><li>Repository pattern</li><li>MERN stack</li></ul></div>
         <div class="skill-row"><h3>DevOps</h3><ul class="chips"><li>Docker</li><li>Kubernetes</li><li>CI/CD pipelines</li></ul></div>
         <div class="skill-row"><h3>Integrations</h3><ul class="chips"><li>PayPal</li><li>Stripe</li><li>Card checkout APIs</li><li>Google Maps</li><li>Google Calendar</li><li>Google Business Profile</li><li>Digital signature libraries</li><li>Warehouse and shipping vendor APIs</li></ul></div>
       </div>
@@ -869,6 +870,7 @@ svg.i{width:20px;height:20px;flex:none}
           <div class="proj-body">
             <h3>Dental Management System</h3>
             <p>Complete dental practice workflow with an interactive teeth chart.</p>
+            <p class="proj-stack">Client project at Tecno Sphere &middot; ASP.NET</p>
           </div>
           <a class="proj-link" href="#" target="_blank" rel="noopener"><!-- paste demo URL here -->View demo <span class="arr" aria-hidden="true">&rarr;</span></a>
         </article>
@@ -878,6 +880,7 @@ svg.i{width:20px;height:20px;flex:none}
           <div class="proj-body">
             <h3>Solar Management System</h3>
             <p>Solar production, sites and panel billing tracked in one dashboard.</p>
+            <p class="proj-stack">Personal project &middot; MERN stack</p>
           </div>
           <a class="proj-link" href="#" target="_blank" rel="noopener"><!-- paste demo URL here -->View demo <span class="arr" aria-hidden="true">&rarr;</span></a>
         </article>
@@ -887,6 +890,7 @@ svg.i{width:20px;height:20px;flex:none}
           <div class="proj-body">
             <h3>Scrap Management System</h3>
             <p>Scrap stock, vendor buying and selling orders in one place.</p>
+            <p class="proj-stack">Personal project &middot; MERN stack</p>
           </div>
           <a class="proj-link" href="#" target="_blank" rel="noopener"><!-- paste demo URL here -->View demo <span class="arr" aria-hidden="true">&rarr;</span></a>
         </article>
@@ -896,6 +900,7 @@ svg.i{width:20px;height:20px;flex:none}
           <div class="proj-body">
             <h3>Gym Management System</h3>
             <p>Members, plans, check-ins and fee tracking.</p>
+            <p class="proj-stack">Personal project &middot; MERN stack</p>
           </div>
           <a class="proj-link" href="#" target="_blank" rel="noopener"><!-- paste demo URL here -->View demo <span class="arr" aria-hidden="true">&rarr;</span></a>
         </article>
@@ -905,6 +910,7 @@ svg.i{width:20px;height:20px;flex:none}
           <div class="proj-body">
             <h3>Wholesale Shop POS</h3>
             <p>Counter checkout with stock, a live credit ledger and billing.</p>
+            <p class="proj-stack">Personal project &middot; MERN stack</p>
           </div>
           <a class="proj-link" href="#" target="_blank" rel="noopener"><!-- paste demo URL here -->View demo <span class="arr" aria-hidden="true">&rarr;</span></a>
         </article>
